@@ -5,8 +5,6 @@ namespace TStark\JailX;
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\command\CommandExecutor;
-use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 use pocketmine\world\Position;
@@ -157,7 +155,7 @@ class Main extends PluginBase implements Listener {
     
         if (!$player instanceof Player) return;
     
-        if (isset($this->jailedPlayers[$player->getName()]) && in_array($command, $this->blockedCommands)) {
+        if (isset($this->jailedPlayers[$player->getName()])) {
             $player->sendMessage(TextFormat::RED . "You cannot use this command while in jail.");
             $event->cancel();
         }
